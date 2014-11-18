@@ -1,5 +1,7 @@
 "use strict";
 
+process.chdir(__dirname);
+
 let co = require('co');
 
 let parse = require('./parse.js');
@@ -46,6 +48,3 @@ co(function *()
 		console.log(e.stack);
 	}
 });
-
-// RSS
-// gitHub

@@ -1,5 +1,7 @@
 "use strict";
 
+let nodebug = process.argv[2] === 'nodebug';
+
 let request = require('request');
 let $ = require('whacko');
 let th = require('thunkify');
@@ -36,6 +38,9 @@ var logIntances =
 		{ kind: 'File', cfg: { name: 'err', filename: 'logs/error.log', level: 'error', maxsize: 1024 * 1024 * 20 }, },
 		{ kind: 'File', cfg: { name: 'access', filename: 'logs/access.log', levels: 'info,warn', maxsize: 1024 * 1024 * 20 }, },
 	];
+if(nodebug)
+	logIntances.shift();
+
 _.each(logIntances, function(li)
 	{
 		let kind = winston.transports[li.kind];

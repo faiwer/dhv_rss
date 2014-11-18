@@ -1,1 +1,3 @@
-node --harmony index.js 
+#!/bin/sh
+DIR=$(dirname $0)
+node --harmony $DIR/index.js $@
